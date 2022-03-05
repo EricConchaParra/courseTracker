@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio DOM - Curso Básico VueJS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+  <content>
+    <h1>
+      Mis Cursos de Platzi💚
+    </h1>
+      <p>
+        <!-- con v-model, vinculo el input con la propiedad -->
+        <input type="text" v-model="title" placeholder="Titulo del curso"/>
+      </p>
+      <p>
+        <input type="number" v-model="time"placeholder="Horas"/>
+      </p>
+      <p>
+        <!-- v-on:click indica que cuando haga clic llama la función addCourse -->
+        <button v-on:click="addCourse">Guardar Curso</button>
+      </p>
+    </fieldset>
+    <div>
+      <h3>Lista de Cursos</h3>
+      <!-- Aquí uso v-show para utilizar la propiedad display:none para ocultar el <p> no quiero 
+        mutar el DOM innecesariamente -->
+      <p class="red" v-show="!courses.length">Aun no has realizado cursos</p>
+      <div>
+        <ol>
+          <!-- Aqui uso v-for para listar el objeto courses -->
+          <li v-for="course in courses">
+            {{course.title}} - ( {{course.time}} hrs.)
+          </li>
+        </ol>
+        <hr/>
+        <p>
+          <!-- totalTime es una propiedad computada, es decir detacta cuando cambia la propiedad
+          "courses" y la recalcula -->
+          Llevo <strong>{{ totalTime }}</strong> horas aprendiendo en Platzi.
+          <b>#NuncaParesDeAprender 💚</b>
+        </p>
+      </div>
+    </div>
+  </content>
+</div>
+<!-- partial -->
+  <script src='https://unpkg.com/vue@2.3.4'></script><script  src="./script.js"></script>
+
+</body>
+</html>
